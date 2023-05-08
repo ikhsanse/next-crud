@@ -1,4 +1,10 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {}
+require('dotenv').config();
+const nextConfig = {
+    env: {
+        url: process.env.BASE_URL,
+      },
+}
+
 
 module.exports = nextConfig
