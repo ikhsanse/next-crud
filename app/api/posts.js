@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
 
-const baseUrl = process.env.url; // Replace with your API base URL
-console.log(baseUrl)
+const baseUrl = process.env.BASE_URL; // Replace with your API base URL
+// console.log(baseUrl)
 // console.log
 
 // Example GET request
