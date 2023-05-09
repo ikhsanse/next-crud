@@ -15,6 +15,7 @@ import {
   FormLabel,
   Input,
   Textarea,
+  Text
 } from "@chakra-ui/react";
 
 const PostEdit = ({ isOpen, onClose, post, onUpdate }) => {
@@ -45,16 +46,16 @@ const PostEdit = ({ isOpen, onClose, post, onUpdate }) => {
                     {...register("title", { required: "Title is required" })}
                     defaultValue={post.title}
                   />
-                  {errors.title && <span>{errors.title.message}</span>}
+                 {errors.title && <Text color='red'>{errors.title.message}</Text>}
                 </FormControl>
                 <FormControl mt={4}>
                   <FormLabel>Description</FormLabel>
                   <Textarea
                     id="body"
-                    {...register("body", { required: "Body is required" })}
+                    {...register("body", { required: "Description is required" })}
                     defaultValue={post.body}
                   />
-                  {errors.body && <span>{errors.body.message}</span>}
+                  {errors.body && <Text color='red'>{errors.body.message}</Text>}
                 </FormControl>
               </ModalBody>
 

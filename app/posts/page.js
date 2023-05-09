@@ -55,6 +55,7 @@ const PostList = () => {
     },
   });
 
+  // maxId for generate id in the createfunction
   useEffect(() => {
     const getMaxId = () => {
       let maxId = 0;
@@ -69,6 +70,7 @@ const PostList = () => {
     setMaxId(max);
   }, [dataState]);
 
+  // initial fetch
   useEffect(() => {
     if (posts) {
       setDataState(posts);
@@ -85,7 +87,7 @@ const PostList = () => {
   };
 
   const submitHandler = async (data) => {
-    const createdPost = await handleCreate(data);
+    const createdPost = await createHandlerPost(data);
     const updatedCreatedPost = { ...createdPost, id: maxId + 1 };
     const newData = [updatedCreatedPost, ...dataState];
     setDataState(newData);
@@ -109,7 +111,7 @@ const PostList = () => {
     setDataState(newDataState);
   };
 
-  const handleDelete = async (post) => {
+  const deleteHandlerPost = async (post) => {
     try {
       const updatedPosts = dataState.filter((item) => item.id !== post.id);
       setDataState(updatedPosts);
@@ -119,7 +121,7 @@ const PostList = () => {
     }
   };
 
-  const handleCreate = async (data) => {
+  const createHandlerPost = async (data) => {
     try {
       const response = await createMutation.mutateAsync(data);
       return response;
@@ -203,7 +205,7 @@ const PostList = () => {
                       Edit
                     </Button>{" "}
                     <Button
-                      onClick={() => handleDelete(post)}
+                      onClick={() => deleteHandlerPost(post)}
                       colorScheme="red"
                     >
                       Delete
